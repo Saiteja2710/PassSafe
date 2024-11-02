@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PassSafe</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li>PassSafe</li>
+        </ul>
+    </nav>
+    
+    <h1>Password Manager</h1>
+    <p><i>“Keep your world protected. Manage all your passwords, secure every account, and enjoy peace of mind knowing your data is safe with us.”</i></p>
+    
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Website</th>
+                    <th>Username</th>
+                    <th>Password</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody id="password-table">
+                <tr class="empty-message">
+                    <td colspan="4">Don't have any data to show</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="form-container">
+        <h2>Add Password</h2>
+        <form>
+            <label for="website">Website</label>
+            <input type="text" id="website" name="website" required>
+
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="button" class="btn">Submit</button>
+        </form>
+    </div>
+
+    <script src="script.js">
+        
+    </script>
+</body>
+
+</html>
