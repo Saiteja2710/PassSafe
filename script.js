@@ -26,17 +26,23 @@ const showPasswords = () => {
         tb.innerHTML = `<tr class="empty-message"><td colspan='4'>Don't have any data to show</td></tr>`;
     } else {
         const arr = JSON.parse(data);
-        arr.forEach(ele => {
-            const row = `<tr>
-                <td>${ele.website}</td>
-                <td>${ele.username}<img onclick="copyToClipboard('${ele.username}')" src="copy.svg" alt="copy" class="copy-icon"></td>
-                <td>${maskPass(ele.password)}<img onclick="copyToClipboard('${ele.password}')" src="copy.svg" alt="copy" class="copy-icon"></td>
-                <td><button onclick="deletePass('${ele.website}')">Delete</button></td>
-            </tr>`;
-            tb.innerHTML += row;
-        });
+        const rows = arr.map(ele => {
+            const websiteURL = ele.website.startsWith("http://") || ele.website.startsWith("https://") 
+                ? ele.website 
+                : `https://${ele.website}`;
+
+            return `
+                <tr>
+                    <td><a href="${websiteURL}" target="_blank">${ele.website}</a></td>
+                    <td>${ele.username}<img onclick="copyToClipboard('${ele.username}')" src="copy.svg" alt="copy" class="copy-icon"></td>
+                    <td>${maskPass(ele.password)}<img onclick="copyToClipboard('${ele.password}')" src="copy.svg" alt="copy" class="copy-icon"></td>
+                    <td><button onclick="deletePass('${ele.website}')">Delete</button></td>
+                </tr>
+            `;
+        }).join("");
+        tb.innerHTML = rows;
     }
-}
+};
 
 document.querySelector(".btn").addEventListener("click", (e) => {
     e.preventDefault();
